@@ -8,11 +8,33 @@ import useAxiosSecure from "../../../../../Hook/useAxiosSequre";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+import io from "socket.io-client";
+import { useEffect } from "react";
 
+const socket = io("https://dns-sever.vercel.app");
 const AddItems = () => {
   const { register, handleSubmit, reset } = useForm();
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
+
+  useEffect(() => {
+    // Listen for new product notifications
+    socket.on("newProductNotification", (product) => {
+      // Show notification
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: `${product.name} is added to the menu.`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    });
+
+    return () => {
+      socket.off("newProductNotification");
+    };
+  }, []);
+
   const onSubmit = async (data) => {
     console.log(data);
     // image upload to imgbb and then get an url
@@ -46,8 +68,10 @@ const AddItems = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+        socket.emit("productAdded", productItem);
       }
     }
+
     console.log(" image url", res.data);
   };
 

@@ -4,9 +4,35 @@ import { Link, NavLink } from "react-router-dom";
 import { MdAdminPanelSettings } from "react-icons/md";
 
 import useAdmin from "../../../../Hook/useAdmin";
+import { useEffect, useState } from "react";
 
 const SidebarDeshboad = () => {
   const [isAdmin] = useAdmin();
+  const [notificationData, setNotificationData] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleNotificationClick = () => {
+    // Show the notification modal
+    setShowModal(true);
+  };
+  useEffect(() => {
+    // Fetch dynamic notification data when component mounts
+    fetchNotificationData();
+  }, []);
+
+  const fetchNotificationData = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/notifications");
+      if (response.ok) {
+        const data = await response.json();
+        setNotificationData(data);
+      } else {
+        console.error("Failed to fetch notification data");
+      }
+    } catch (error) {
+      console.error("Error fetching notification data:", error);
+    }
+  };
   return (
     <div>
       <div>
@@ -32,8 +58,8 @@ const SidebarDeshboad = () => {
                 </li>
                 {/* -------------- Notifications----------*/}
                 <li>
-                  <NavLink
-                    to=""
+                  <button
+                    onClick={handleNotificationClick}
                     className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
                   >
                     <span className="inline-flex justify-center items-center ml-4">
@@ -58,7 +84,7 @@ const SidebarDeshboad = () => {
                     <span className="hidden md:block px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-red-500 bg-red-50 rounded-full">
                       1.2k
                     </span>
-                  </NavLink>
+                  </button>
                 </li>
 
                 {/*------------- admin condition router -------- */}
@@ -224,6 +250,25 @@ const SidebarDeshboad = () => {
           </div>
         </div>
       </div>
+
+      {/* Notification modal */}
+      {showModal && (
+        <div className="fixed inset-0 flex items-center justify-center z-50">
+          <div className="fixed inset-0 bg-black opacity-50"></div>
+          <div className="bg-white p-4 rounded-md z-10">
+            <h2 className="text-lg font-semibold mb-2">Notifications</h2>
+            <p>
+              You have <span></span> {notificationData?.length} notifications.
+            </p>
+            <button
+              onClick={() => setShowModal(false)}
+              className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

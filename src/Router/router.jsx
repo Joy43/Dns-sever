@@ -56,7 +56,7 @@ export const router = createBrowserRouter([
         path: "updateItem/:id",
         element: <UpdateItem></UpdateItem>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/product/${params.id}`),
+          fetch(`https://dns-sever.vercel.app/product/${params.id}`),
       },
     ],
   },

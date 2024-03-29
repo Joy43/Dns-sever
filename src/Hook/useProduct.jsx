@@ -9,7 +9,7 @@ const useProduct = (search) => {
       try {
         setLoading(true);
         const response = await fetch(
-          `http://localhost:5000/product?search=${search}`
+          `https://dns-sever.vercel.app/product?search=${search}`
         );
         const data = await response.json();
         setProduct(data);
