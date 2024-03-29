@@ -1,0 +1,113 @@
+{
+    "records": [
+      {
+        "type": "amber",
+        "name": "example.com",
+        "order_number": 1,
+        "fingerprint": "123456789abcdef",
+        "user": "admin",
+        "value": "192.0.2.1",
+        "img": "example.com/image1.jpg"
+      },
+      {
+        "type": "MX",
+        "name": "example.com",
+        "order_number": 2,
+        "fingerprint": "abcdef123456789",
+        "user": "admin",
+        "value": "mail.example.com",
+        "img": "example.com/image2.jpg"
+      },
+      {
+        "type": "CNAME",
+        "name": "www",
+        "order_number": 3,
+        "fingerprint": "789abcdef123456",
+        "user": "admin",
+        "value": "example.com",
+        "img": "example.com/image3.jpg"
+      },
+      {
+        "type": "TXT",
+        "name": "example.com",
+        "order_number": 4,
+        "fingerprint": "987654321abcdef",
+        "user": "admin",
+        "value": "v=spf1 mx -all",
+        "img": "example.com/image4.jpg"
+      },
+      {
+        "type": "NS",
+        "name": "example.com",
+        "order_number": 5,
+        "fingerprint": "abcdef987654321",
+        "user": "admin",
+        "value": "ns1.example.com",
+        "img": "example.com/image5.jpg"
+      },
+      {
+        "type": "PTR",
+        "name": "1.2.0.192.in-addr.arpa",
+        "order_number": 6,
+        "fingerprint": "abcdef123456789",
+        "user": "admin",
+        "value": "host.example.com",
+        "img": "example.com/image6.jpg"
+      },
+      {
+        "type": "SPF",
+        "name": "example.com",
+        "order_number": 7,
+        "fingerprint": "123456abcdef789",
+        "user": "admin",
+        "value": "v=spf1 mx -all",
+        "img": "example.com/image7.jpg"
+      },
+      {
+        "type": "CAA",
+        "name": "example.com",
+        "order_number": 8,
+        "fingerprint": "abcdef789012345",
+        "user": "admin",
+        "value": "letsencrypt.org",
+        "img": "example.com/image8.jpg"
+      },
+      {
+        "type": "DNSKEY",
+        "name": "example.com",
+        "order_number": 9,
+        "fingerprint": "abcdef012345678",
+        "user": "admin",
+        "value": "AwEAAag",
+        "img": "example.com/image9.jpg"
+      },
+      {
+        "type": "DS",
+        "name": "example.com",
+        "order_number": 10,
+        "fingerprint": "abcdef789012345",
+        "user": "admin",
+        "value": "49FD46E6C4B45C55D4AC",
+        "img": "example.com/image10.jpg"
+      },
+      {
+        "type": "NAPTR",
+        "name": "_sip._udp.example.com",
+        "order_number": 11,
+        "fingerprint": "abcdef012345678",
+        "user": "admin",
+        "value": "_sip._udp.example.com",
+        "img": "example.com/image11.jpg"
+      },
+      {
+        "type": "SSHFP",
+        "name": "example.com",
+        "order_number": 12,
+        "fingerprint": "abcdef789012345",
+        "user": "admin",
+        "value": "123456789abcdef67890123456789abcdef67890",
+        "img": "example.com/image12.jpg"
+      }
+    ]
+  }
+  
