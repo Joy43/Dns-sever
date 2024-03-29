@@ -1,3 +1,4 @@
+import Products from "../../Dashboad/Allproduct/Product/Product";
 import Cover from "../Cover/Cover";
 
 const Home = () => {
@@ -5,6 +6,9 @@ const Home = () => {
     <div>
       <div className="mt-24 mb-6">
         <Cover></Cover>
+      </div>
+      <div>
+        <Products></Products>
       </div>
     </div>
   );

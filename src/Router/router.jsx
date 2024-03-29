@@ -9,6 +9,7 @@ import PrivateRoute from "./PrivateRouter";
 import DnsManage from "../Pages/Dashboad/Dashboad/AdminIteams/DnsManage/DnsManage";
 import UpdateItem from "../Pages/Dashboad/Dashboad/AdminIteams/UpdateIteam/Updateiteam";
 import AddItems from "../Pages/Dashboad/Dashboad/AdminIteams/AddIteams/Additeam";
+import Products from "../Pages/Dashboad/Allproduct/Product/Product";
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
       {
         path: "dashboard/manageitem",
         element: <DnsManage></DnsManage>,
+      },
+      {
+        path: "product",
+        element: <Products></Products>,
       },
       {
         path: "dashboard/addItems",

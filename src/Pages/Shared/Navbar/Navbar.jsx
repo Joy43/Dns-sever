@@ -8,12 +8,10 @@ const Navbar = () => {
   const [dropDownState, setDropDownState] = useState(false);
   const dropDownMenuRef = useRef();
   // ------logout--------
-  const HandleLogout = () => {
+  const handleLogOut = () => {
     logOut()
       .then(() => {})
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => console.log(error));
   };
   useEffect(() => {
     const closeDropDown = (e) => {
@@ -42,7 +40,7 @@ const Navbar = () => {
 
       <li className="group flex  cursor-pointer flex-col">
         <button className="btn">
-          <Link to="/dashboard">Dashboad</Link>{" "}
+          <Link to="/dashboard/product">Dashboad</Link>{" "}
           <div className="badge badge-secondary">+99</div>
         </button>
 
@@ -62,7 +60,7 @@ const Navbar = () => {
         <ul className="flex items-center justify-between gap-10">{Navlinks}</ul>
         <div className="flex items-center justify-between gap-5">
           {user ? (
-            <div tabIndex={0} role="button" className="bg-green-200">
+            <div tabIndex={0} role="button" className="bg-slate-500">
               <div
                 ref={dropDownMenuRef}
                 onClick={() => setDropDownState(!dropDownState)}
@@ -76,31 +74,28 @@ const Navbar = () => {
                 />
               </div>
               {dropDownState && (
-                <ul className="absolute bg-slate-400 top-12 z-10 flex flex-col gap-2 rounded-lg">
+                <ul className="absolute p-3 bg-slate-400 top-12 z-10 flex flex-col gap-2 rounded-lg">
                   <li className="cursor-pointer   rounded-b-lg px-6 py-2 text-white hover:bg-sky-600">
                     {user.displayName}
                   </li>
-                  <li
-                    onClick={HandleLogout}
-                    className="cursor-pointer  rounded-b-lg px-6 py-2 text-white hover:bg-sky-600"
-                  >
+                  <li className="cursor-pointer  rounded-b-lg px-6 py-2 text-white hover:bg-sky-600">
                     {user.email}
                   </li>
-                  <li
-                    onClick={HandleLogout}
-                    className="cursor-pointer  rounded-b-lg px-6 py-2 text-white hover:bg-sky-600"
-                  >
-                    Log Out
+                  <li>
+                    <button
+                      onClick={handleLogOut}
+                      className="cursor-pointer  rounded-b-lg px-6 py-2 text-white hover:bg-sky-600"
+                    >
+                      Logout
+                    </button>
                   </li>
                 </ul>
               )}
             </div>
           ) : (
-            <Link to="/signup" className="">
-              <button className="rounded-full bg-sky-600 px-6 py-2 text-white transition-all duration-300 hover:scale-90">
-                <Link to="/login"> SignUp or login</Link>
-              </button>
-            </Link>
+            <button className="rounded-full bg-sky-600 px-6 py-2 text-white transition-all duration-300 hover:scale-90">
+              <Link to="/login"> SignUp or login</Link>
+            </button>
           )}
         </div>
       </div>
